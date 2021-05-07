@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <title>Document</title>
+</head>
+<body>
+
+    <div id ="text">
+    </div>
+    <button id="button">Click to change</button>
+    <script>
+ document.getElementById('button').addEventListener('click', loadText);
+
+ function loadText(){
+     var xhr = new XMLHttpRequest();
+     //OPEN
+     xhr.open('GET', 'test3.html',true);
+console.log('READYSTATE', xhr.readyState);
+     xhr.onload = function(){
+        console.log('READYSTATE', xhr.readyState);
+         if (this.status == 200){
+          //   console.log(this.responseText);
+        document.getElementById('text').innerHTML= this.responseText; 
+        }
+     }
+    // xhr.onreadystatechange= function(){
+    //     console.log('READYSTATE', xhr.readyState);
+    //     if(this.readyState == 4 && this.status ==200 ){
+    //        // console.log(this.responseText);
+    //     }
+    // }
+     xhr.send();
+ }
+    </script>
+</body>
+</html>
